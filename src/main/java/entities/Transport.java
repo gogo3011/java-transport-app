@@ -1,22 +1,25 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name="transport")
 public class Transport implements BaseEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String destination;
+
     private String cost;
+
     @OneToOne
     private Employee employee;
     @OneToOne
     private Client client;
-    @OneToOne
-    private Transport transport;
+
+    private boolean paid;
 
     public Transport() {
     }
@@ -69,6 +72,14 @@ public class Transport implements BaseEntity {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
     }
 
     @Override

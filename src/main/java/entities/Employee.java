@@ -1,21 +1,28 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name="employees")
 public class Employee implements BaseEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String name;
+
+    private double salary;
+
+    private Qualification qualification;
 
     public Employee() {
     }
 
-    public Employee(long id, String name) {
-        this.id = id;
+    public Employee(String name, double salary, Qualification qualification) {
         this.name = name;
+        this.salary = salary;
+        this.qualification = qualification;
     }
 
     @Override
@@ -47,7 +54,23 @@ public class Employee implements BaseEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, name);
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public Qualification getQualification() {
+        return qualification;
+    }
+
+    public void setQualification(Qualification qualification) {
+        this.qualification = qualification;
     }
 
     @Override

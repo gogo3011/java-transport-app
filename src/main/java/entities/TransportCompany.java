@@ -1,27 +1,35 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name="transport_company")
 public class TransportCompany implements BaseEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String name;
+
+    private long profits;
+
     @OneToMany
     private Set<Employee> employees;
     @OneToMany
     private Set<Vehicle> vehicles;
+    @OneToMany
+    private Set<Client> clients;
 
     public TransportCompany() {
     }
 
-    public TransportCompany(long id, String name, Set<Employee> employees) {
-        this.id = id;
+    public TransportCompany(String name) {
         this.name = name;
-        this.employees = employees;
+        this.employees = new HashSet<>();
+        this.vehicles = new HashSet<>();
+        this.clients = new HashSet<>();
     }
 
     @Override
@@ -57,5 +65,33 @@ public class TransportCompany implements BaseEntity {
 
     public void setVehicles(Set<Vehicle> vehicles) {
         this.vehicles = vehicles;
+    }
+
+    public long getProfits() {
+        return profits;
+    }
+
+    public void setProfits(long profits) {
+        this.profits = profits;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
+    }
+
+    @Override
+    public String toString() {
+        return "TransportCompany{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", profits=" + profits +
+                ", employees=" + employees +
+                ", vehicles=" + vehicles +
+                ", clients=" + clients +
+                '}';
     }
 }

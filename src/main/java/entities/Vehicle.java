@@ -1,14 +1,17 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name="vehicles")
 public class Vehicle implements BaseEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String model;
+
     private String registrationNumber;
 
     public Vehicle() {
