@@ -1,22 +1,43 @@
 package services;
 
+import entities.Employee;
 import entities.TransportCompany;
-import entities.TransportCompanyFilter;
+import entities.filters.TransportCompanyFilter;
+import entities.Vehicle;
 import repositories.EmployeeRepository;
 import repositories.TransportCompanyRepository;
+import repositories.VehicleRepository;
+import utils.Validators;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class TransportCompanyService {
 
-    TransportCompanyRepository transportCompanyRepository = new TransportCompanyRepository();
-    EmployeeRepository employeeRepository = new EmployeeRepository();
+    private TransportCompanyRepository transportCompanyRepository = new TransportCompanyRepository();
+    private EmployeeRepository employeeRepository = new EmployeeRepository();
+    private VehicleRepository vehicleRepository = new VehicleRepository();
 
-    public void save(TransportCompany transportCompany) {
-        transportCompany.setEmployees(
-            transportCompany.getEmployees().stream().map(e -> employeeRepository.save(e)).collect(Collectors.toSet())
-        );
+    public TransportCompany save(TransportCompany transportCompany) {
+        return transportCompanyRepository.save(transportCompany);
+    }
+
+    public TransportCompany createCompany(String name) {
+        if (!Validators.validTransportCompanyName(name)) {
+            throw new RuntimeException("Invalid company name");
+        }
+        TransportCompany transportCompany = new TransportCompany(name);
+        return save(transportCompany);
+    }
+
+    public void addEmployeeToCompany(Employee employee, TransportCompany transportCompany) {
+        employee = employeeRepository.save(employee);
+        transportCompany.getEmployees().add(employee);
+        transportCompanyRepository.save(transportCompany);
+    }
+
+    public void addVehicleToCompany(Vehicle vehicle, TransportCompany transportCompany) {
+        vehicle = vehicleRepository.save(vehicle);
+        transportCompany.getVehicles().add(vehicle);
         transportCompanyRepository.save(transportCompany);
     }
 

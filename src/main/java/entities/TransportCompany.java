@@ -15,12 +15,14 @@ public class TransportCompany implements BaseEntity {
 
     private long profits;
 
-    @OneToMany
+    @OneToMany(mappedBy = "transportCompany")
     private Set<Employee> employees;
-    @OneToMany
+    @OneToMany(mappedBy = "transportCompany")
     private Set<Vehicle> vehicles;
     @OneToMany
     private Set<Client> clients;
+    @OneToMany(mappedBy = "transportCompany")
+    private Set<Transport> transports;
 
     public TransportCompany() {
     }
@@ -81,6 +83,14 @@ public class TransportCompany implements BaseEntity {
 
     public void setClients(Set<Client> clients) {
         this.clients = clients;
+    }
+
+    public Set<Transport> getTransports() {
+        return transports;
+    }
+
+    public void setTransports(Set<Transport> transports) {
+        this.transports = transports;
     }
 
     @Override

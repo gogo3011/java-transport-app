@@ -1,6 +1,8 @@
 package repositories;
 
 import entities.*;
+import entities.filters.BaseFilter;
+import entities.filters.EmployeeFilter;
 import utils.EntityManagerCreator;
 import utils.Utils;
 

@@ -1,7 +1,7 @@
 package repositories.base;
 
 import entities.BaseEntity;
-import entities.BaseFilter;
+import entities.filters.BaseFilter;
 
 import java.util.List;
 

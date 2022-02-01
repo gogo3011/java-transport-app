@@ -1,4 +1,6 @@
-package entities;
+package entities.filters;
+
+import entities.filters.BaseFilter;
 
 public class TransportCompanyFilter extends BaseFilter {
     private String name;

@@ -1,6 +1,6 @@
 package repositories;
 
-import entities.BaseFilter;
+import entities.filters.BaseFilter;
 import entities.Vehicle;
 import utils.EntityManagerCreator;
 

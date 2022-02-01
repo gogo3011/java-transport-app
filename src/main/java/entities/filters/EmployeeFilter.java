@@ -1,6 +1,9 @@
-package entities;
+package entities.filters;
 
-public class EmployeeFilter extends BaseFilter{
+import entities.Qualification;
+import entities.filters.BaseFilter;
+
+public class EmployeeFilter extends BaseFilter {
     private double salaryHigherThan;
     private double salaryLowerThan;
     private Qualification qualification;

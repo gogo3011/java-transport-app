@@ -1,7 +1,7 @@
 package repositories;
 
 import entities.BaseEntity;
-import entities.BaseFilter;
+import entities.filters.BaseFilter;
 import repositories.base.DataRepository;
 
 import javax.persistence.EntityManager;

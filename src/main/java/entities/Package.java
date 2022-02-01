@@ -9,10 +9,7 @@ public class Package implements BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
     private String description;
-    @OneToMany
-    private Set<Transport> transports;
 
     @Override
     public long getId() {
@@ -30,13 +27,5 @@ public class Package implements BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Set<Transport> getTransports() {
-        return transports;
-    }
-
-    public void setTransports(Set<Transport> transports) {
-        this.transports = transports;
     }
 }

@@ -16,6 +16,10 @@ public class Employee implements BaseEntity {
 
     private Qualification qualification;
 
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private TransportCompany transportCompany;
+
     public Employee() {
     }
 
@@ -71,6 +75,14 @@ public class Employee implements BaseEntity {
 
     public void setQualification(Qualification qualification) {
         this.qualification = qualification;
+    }
+
+    public TransportCompany getTransportCompany() {
+        return transportCompany;
+    }
+
+    public void setTransportCompany(TransportCompany transportCompany) {
+        this.transportCompany = transportCompany;
     }
 
     @Override

@@ -1,8 +1,8 @@
 package repositories;
 
-import entities.BaseFilter;
+import entities.filters.BaseFilter;
 import entities.TransportCompany;
-import entities.TransportCompanyFilter;
+import entities.filters.TransportCompanyFilter;
 import entities.TransportCompany_;
 import utils.EntityManagerCreator;
 import utils.Utils;

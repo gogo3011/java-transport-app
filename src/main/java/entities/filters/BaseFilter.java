@@ -1,4 +1,4 @@
-package entities;
+package entities.filters;
 
 public class BaseFilter {
     private Long id;

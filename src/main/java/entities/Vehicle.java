@@ -14,7 +14,17 @@ public class Vehicle implements BaseEntity {
 
     private String registrationNumber;
 
+    @ManyToOne
+    @JoinColumn(name="company_id")
+    private TransportCompany transportCompany;
+
     public Vehicle() {
+    }
+
+    public Vehicle(String model, String registrationNumber, TransportCompany transportCompany) {
+        this.model = model;
+        this.registrationNumber = registrationNumber;
+        this.transportCompany = transportCompany;
     }
 
     public Vehicle(long id, String model, String registrationNumber) {

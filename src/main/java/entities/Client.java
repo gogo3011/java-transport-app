@@ -1,6 +1,7 @@
 package entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -11,8 +12,10 @@ public class Client implements BaseEntity {
     private Long id;
 
     private String name;
+    
     @OneToMany
-    private Set<Transport> transports;
+    @JoinColumn(name = "sender_id")
+    private Set<Transport> sent;
 
     public Client() {
     }
@@ -40,11 +43,24 @@ public class Client implements BaseEntity {
         this.name = name;
     }
 
-    public Set<Transport> getTransports() {
-        return transports;
+    public Set<Transport> getSent() {
+        return sent;
     }
 
-    public void setTransports(Set<Transport> transports) {
-        this.transports = transports;
+    public void setSent(Set<Transport> transports) {
+        this.sent = transports;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return Objects.equals(id, client.id) && Objects.equals(name, client.name) && Objects.equals(sent, client.sent);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, sent);
     }
 }
